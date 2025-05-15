@@ -33,12 +33,14 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+const mongoURI = 'mongodb+srv://andresfg1499:754336822027@cluster0.nwiltmr.mongodb.net/certus?retryWrites=true&w=majority&appName=Cluster0'; 
+
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 })
-.then(() => console.log('Conexion exitosa a MongoDB'))
-.catch(err => console.error('Error conectando a MongoDB:' ,err));
+.then(() => console.log('✅ Conectado a MongoDB'))
+.catch(err => console.error('❌ Error al conectar a MongoDB:', err));
 
 /**
  * @swagger
