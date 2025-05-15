@@ -32,12 +32,13 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use(express.json());
 app.use(cors());
-const MONGO_URI = process.env.MONGO_URI;   
-mongoose.connect(MONGO_URI).then(()=> {
-    console.log('Se conecto exitosamente..');
-}).catch((err) =>{
-    console.log('Error encontrado', err);
-});
+
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('Conexion exitosa a MongoDB'))
+.catch(err => console.error('Error conectando a MongoDB:' ,err));
 
 /**
  * @swagger
