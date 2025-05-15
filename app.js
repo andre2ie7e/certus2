@@ -35,10 +35,7 @@ app.use(cors());
 
 const mongoURI = 'mongodb+srv://andresfg1499:754336822027@cluster0.nwiltmr.mongodb.net/certus?retryWrites=true&w=majority&appName=Cluster0'; 
 
-mongoose.connect(mongoURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+mongoose.connect(mongoURI)
 .then(() => console.log('✅ Conectado a MongoDB'))
 .catch(err => console.error('❌ Error al conectar a MongoDB:', err));
 
